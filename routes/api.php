@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/products', [ProductController::class,'index']);
 Route::get('/products/{id}', [ProductController::class,'show']);
 Route::group(['prefix'=>'product'],function(){
-    Route::get('/{product}reviews',[ReviewController::class,'index']);
+    Route::get('/{product}reviews',[ReviewController::class,'index'])->name('reviews.index');
     Route::get('/{product}reviews',[ReviewController::class,'store']);
 
 
