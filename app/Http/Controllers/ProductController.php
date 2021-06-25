@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Product\ResourceProduct;
 use App\Http\Resources\ProductResource;
+use App\Http\Resources\ProductCollection;
+
 use App\Models\Product;
 use Illuminate\Http\Request;
-
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-       return   ProductResource::collection(Product::paginate(20)); 
+        $products=Product::all();
+       return new  ProductResource($products); 
     //    return Product::all();
     }
 
@@ -48,8 +51,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product=Product::find($id);
-        return new ProductResource($product);
+        $product=Product::findOrFail($id);
+        return new ProductCollection($product);
     }
 
     /**
