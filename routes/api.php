@@ -21,8 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/products', [ProductController::class,'index'])->name('product.index');
 Route::get('/products/{id}', [ProductController::class,'show'])->name('product.show');
+Route::post('/products/store', [ProductController::class,'store'])->name('product.store');
+Route::put('/products/update/{id}', [ProductController::class,'update'])->name('product.update');
 
-    Route::get('/{product}/reviews',[ReviewController::class,'index'])->name('reviews.index');
+Route::get('/{product}/reviews',[ReviewController::class,'index'])->name('reviews.index');
  
 
 
