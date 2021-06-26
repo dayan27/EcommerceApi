@@ -12,16 +12,13 @@ class ProductCollection extends ResourceCollection
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+    public $collects=ProductModifiedResource::class;
     public function toArray($request)
     {
-        // return parent::toArray($request);
-        return[
-            'name'=>$this->name,
-            'total_price'=>round((1-($this->discount/100))*$this->price),
-            'rating'=>$this->reviews->sum('star')/$this->reviews->count(),
-            'href'=>[
-              'link'
-            ],
+        return [
+
+            'name'=>$this->collection,
+
         ];
     }
 }

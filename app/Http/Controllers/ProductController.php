@@ -17,8 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products=Product::all();
-       return new  ProductResource($products); 
+        $product=Product::all();
+       return  new ProductCollection($product); 
     //    return Product::all();
     }
 
@@ -52,7 +52,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product=Product::findOrFail($id);
-        return new ProductCollection($product);
+        return new ProductResource($product);
     }
 
     /**

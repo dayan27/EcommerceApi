@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/products', [ProductController::class,'index']);
-Route::get('/products/{id}', [ProductController::class,'show']);
-Route::group(['prefix'=>'product'],function(){
-    Route::get('/{product}reviews',[ReviewController::class,'index'])->name('reviews.index');
-    Route::get('/{product}reviews',[ReviewController::class,'store']);
+Route::get('/products', [ProductController::class,'index'])->name('product.index');
+Route::get('/products/{id}', [ProductController::class,'show'])->name('product.show');
+
+    Route::get('/{product}/reviews',[ReviewController::class,'index'])->name('reviews.index');
+ 
 
 
-});
+
 
